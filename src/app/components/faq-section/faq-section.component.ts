@@ -45,7 +45,7 @@ export class FaqSectionComponent implements AfterViewInit {
     },
     {
       question: 'Jaki jest koszt projektu wnętrza?',
-      answer: 'Ceny zaczynają się od 110 zł/m² za projekt funkcjonalny, 160 zł/m² za projekt koncepcyjny i 220 zł/m² za projekt kompleksowy. Dokładną wycenę przygotowujemy po zapoznaniu się z zakresem prac i metrażem.',
+      answer: 'Ceny zaczynają się od 100 zł/m² za projekt funkcjonalny, 120 zł/m² za projekt koncepcyjny i 150 zł/m² za projekt kompleksowy. Dokładną wycenę przygotowujemy po zapoznaniu się z zakresem prac i metrażem.',
       isOpen: false
     }
   ];

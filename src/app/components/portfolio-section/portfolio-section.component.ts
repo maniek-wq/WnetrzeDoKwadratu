@@ -64,7 +64,7 @@ export class PortfolioSectionComponent implements AfterViewInit {
     },
     {
       id: 2,
-      title: 'Loft na Pradze',
+      title: 'Apartament dwu-pokojowy',
       category: 'mieszkania',
       image: 'assets/images/i.jpg',
       images: ['assets/images/i.jpg', 'assets/images/j.jpg', 'assets/images/k.jpg', 'assets/images/l.jpg', 'assets/images/m.jpg', 'assets/images/n.jpg'],
@@ -73,7 +73,7 @@ export class PortfolioSectionComponent implements AfterViewInit {
     },
     {
       id: 3,
-      title: 'Apartament na Mokotowie',
+      title: 'Mieszkanie w centrum',
       category: 'mieszkania',
       image: 'assets/images/z11.png',
       images: ['assets/images/z11.png', 'assets/images/z10.png', 'assets/images/z12.png', 'assets/images/z13.png', 'assets/images/z14.png'],
@@ -82,7 +82,7 @@ export class PortfolioSectionComponent implements AfterViewInit {
     },
     {
       id: 4,
-      title: 'Dom w Konstancinie',
+      title: 'Dom poza miastem',
       category: 'domy',
       image: 'assets/images/o.jpg',
       images: ['assets/images/o.jpg', 'assets/images/p.jpg', 'assets/images/r.jpg', 'assets/images/s.jpg', 'assets/images/t.jpg'],
@@ -91,7 +91,7 @@ export class PortfolioSectionComponent implements AfterViewInit {
     },
     {
       id: 5,
-      title: 'Biuro IT Company',
+      title: 'Przestrzeń biurowa SEP',
       category: 'biura',
       image: 'assets/images/z6.png',
       images: ['assets/images/z6.png', 'assets/images/z7.jpg', 'assets/images/z8.jpg', 'assets/images/z9.png'],
@@ -100,7 +100,7 @@ export class PortfolioSectionComponent implements AfterViewInit {
     },
     {
       id: 6,
-      title: 'Mieszkanie w Centrum',
+      title: 'Strefa nocna',
       category: 'mieszkania',
       image: 'assets/images/u.png',
       images: ['assets/images/u.png', 'assets/images/w.png', 'assets/images/x.png', 'assets/images/y.png', 'assets/images/z.png'],
