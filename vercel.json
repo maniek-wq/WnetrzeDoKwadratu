@@ -3,10 +3,6 @@
   "outputDirectory": "dist/wnetrze-do-kwadratu/browser",
   "framework": "angular",
   "rewrites": [
-    { 
-      "source": "/google3d8527a5788f05dc.html",
-      "destination": "/google3d8527a5788f05dc.html"
-    },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
