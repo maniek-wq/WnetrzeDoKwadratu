@@ -13,6 +13,18 @@ const EMAILJS_CONFIG = {
   PUBLIC_KEY: 'qSPtmwcJzP9Tt5uqV'       // klucz publiczny z Dashboard
 };
 
+// ========================================
+// ☁️ KONFIGURACJA CLOUDINARY
+// 1. Załóż konto na cloudinary.com (darmowe 25GB)
+// 2. Dashboard → Settings → Upload → Upload presets
+// 3. Utwórz "Unsigned" preset (bez autoryzacji)
+// 4. Skopiuj Cloud Name i Upload Preset poniżej
+// ========================================
+const CLOUDINARY_CONFIG = {
+  CLOUD_NAME: 'YOUR_CLOUD_NAME',        // np. 'dokwadratu'
+  UPLOAD_PRESET: 'YOUR_UPLOAD_PRESET'   // np. 'wnetrze_upload'
+};
+
 @Component({
   selector: 'app-contact-section',
   standalone: true,
@@ -177,29 +189,93 @@ export class ContactSectionComponent implements AfterViewInit {
     document.body.style.overflow = '';
   }
 
+  async uploadToCloudinary(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', CLOUDINARY_CONFIG.UPLOAD_PRESET);
+      formData.append('folder', 'wnetrze-do-kwadratu/contact-form');
+      
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUDINARY_CONFIG.CLOUD_NAME}/image/upload`);
+      
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          resolve(response.secure_url); // URL do zdjęcia
+        } else {
+          reject(new Error(`Upload failed: ${xhr.statusText}`));
+        }
+      };
+      
+      xhr.onerror = () => {
+        reject(new Error('Network error during upload'));
+      };
+      
+      xhr.send(formData);
+    });
+  }
+
   async onSubmit() {
     if (this.contactForm.valid) {
       this.isLoading = true;
       this.errorMessage = '';
       
-      // Przygotowanie informacji o zdjęciach (dodawane do głównej wiadomości)
-      let attachmentsInfo = '';
+      let uploadedPhotoUrls: string[] = [];
       
+      // Upload zdjęć do Cloudinary
       if (this.selectedFiles.length > 0) {
-        attachmentsInfo = `\n\n📎 ZAŁĄCZONE ZDJĘCIA (${this.selectedFiles.length}):\n`;
-        this.selectedFiles.forEach((file, index) => {
-          attachmentsInfo += `${index + 1}. ${file.name} (${this.formatFileSize(file.size)})\n`;
-        });
-        attachmentsInfo += '\n(Uwaga: Zdjęcia zostały przesłane przez formularz. Skontaktuj się z klientem bezpośrednio, aby je otrzymać.)';
+        try {
+          this.errorMessage = 'Przesyłanie zdjęć...';
+          
+          for (const file of this.selectedFiles) {
+            const url = await this.uploadToCloudinary(file);
+            uploadedPhotoUrls.push(url);
+          }
+          
+          this.errorMessage = '';
+        } catch (error: any) {
+          console.error('❌ Błąd uploadu zdjęć:', error);
+          this.errorMessage = 'Błąd podczas przesyłania zdjęć. Spróbuj ponownie lub wyślij wiadomość bez zdjęć.';
+          this.isLoading = false;
+          return;
+        }
       }
       
-      const templateParams = {
+      // Przygotowanie informacji o zdjęciach z linkami
+      let attachmentsInfo = '';
+      let photosHtml = '';
+      
+      if (uploadedPhotoUrls.length > 0) {
+        attachmentsInfo = `\n\n📎 ZAŁĄCZONE ZDJĘCIA (${uploadedPhotoUrls.length}):\n`;
+        uploadedPhotoUrls.forEach((url, index) => {
+          attachmentsInfo += `${index + 1}. ${url}\n`;
+        });
+        
+        // HTML z linkami do zdjęć
+        photosHtml = '<br><br><div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; border-left: 4px solid #8B7355;">';
+        photosHtml += `<strong style="color: #8B7355;">📎 Załączone zdjęcia (${uploadedPhotoUrls.length}):</strong><br><br>`;
+        uploadedPhotoUrls.forEach((url, index) => {
+          photosHtml += `<div style="margin-bottom: 15px;">`;
+          photosHtml += `<a href="${url}" target="_blank" style="display: inline-block; margin-bottom: 5px; color: #8B7355; text-decoration: none; font-weight: bold;">Zdjęcie ${index + 1} - Kliknij aby zobaczyć</a><br>`;
+          photosHtml += `<img src="${url}" alt="Zdjęcie ${index + 1}" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px; margin-top: 5px;">`;
+          photosHtml += `</div>`;
+        });
+        photosHtml += '</div>';
+      }
+      
+      const templateParams: any = {
         from_name: this.contactForm.value.name,
         from_email: this.contactForm.value.email,
         subject: this.contactForm.value.subject,
         message: this.contactForm.value.message + attachmentsInfo,
         to_email: 'dokwadratu.w@gmail.com'
       };
+      
+      // Dodaj HTML ze zdjęciami jeśli są
+      if (photosHtml) {
+        templateParams.photos_html = photosHtml;
+      }
       
       try {
         await emailjs.send(
@@ -226,7 +302,7 @@ export class ContactSectionComponent implements AfterViewInit {
         let errorMsg = 'Wystąpił błąd podczas wysyłania wiadomości. ';
         
         if (error?.status === 400) {
-          errorMsg += 'Prawdopodobnie dane są zbyt duże (zdjęcia). Spróbuj zmniejszyć rozmiar zdjęć lub wyślij mniej plików.';
+          errorMsg += 'Prawdopodobnie dane są zbyt duże. Spróbuj ponownie.';
         } else if (error?.status === 429) {
           errorMsg += 'Zbyt wiele żądań. Poczekaj chwilę i spróbuj ponownie.';
         } else if (error?.status === 500) {
