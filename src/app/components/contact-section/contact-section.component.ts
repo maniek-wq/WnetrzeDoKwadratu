@@ -182,27 +182,23 @@ export class ContactSectionComponent implements AfterViewInit {
       this.isLoading = true;
       this.errorMessage = '';
       
-      // Przygotowanie informacji o zdjęciach (tylko tekst, bez base64)
+      // Przygotowanie informacji o zdjęciach (czysty tekst dla EmailJS)
       let attachmentsInfo = '';
       let photosHtml = '';
       
       if (this.selectedFiles.length > 0) {
+        // Tekst do wiadomości (wiadomość główna)
         attachmentsInfo = `\n\n📎 ZAŁĄCZONE ZDJĘCIA (${this.selectedFiles.length}):\n`;
         this.selectedFiles.forEach((file, index) => {
           attachmentsInfo += `${index + 1}. ${file.name} (${this.formatFileSize(file.size)})\n`;
         });
-        attachmentsInfo += '\n\nUwaga: Zdjęcia zostały przesłane przez formularz. Aby je zobaczyć, sprawdź wiadomość w formacie HTML lub skontaktuj się z klientem bezpośrednio.';
         
-        // HTML z informacją o zdjęciach (bez base64 - tylko lista)
-        photosHtml = '<br><br><div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; border-left: 4px solid #8B7355;">';
-        photosHtml += '<strong style="color: #8B7355;">📎 Załączone zdjęcia (' + this.selectedFiles.length + '):</strong><br><br>';
-        this.filePreviews.forEach((preview, index) => {
-          photosHtml += `<div style="margin-bottom: 10px; padding: 8px; background-color: white; border-radius: 4px;">`;
-          photosHtml += `<strong>${index + 1}. ${preview.name}</strong> (${this.formatFileSize(preview.size)})`;
-          photosHtml += `</div>`;
+        // Czysty tekst dla photos_html (działa zarówno w HTML jak i tekstowych emailach)
+        photosHtml = `\n\n📎 ZAŁĄCZONE ZDJĘCIA (${this.selectedFiles.length}):\n`;
+        this.selectedFiles.forEach((file, index) => {
+          photosHtml += `${index + 1}. ${file.name} (${this.formatFileSize(file.size)})\n`;
         });
-        photosHtml += '<br><p style="font-size: 12px; color: #666; margin: 0;">Zdjęcia zostały przesłane przez formularz kontaktowy. Skontaktuj się z klientem, aby otrzymać zdjęcia bezpośrednio.</p>';
-        photosHtml += '</div>';
+        photosHtml += '\n(Uwaga: Zdjęcia zostały przesłane przez formularz. Skontaktuj się z klientem bezpośrednio aby je otrzymać)';
       }
       
       const templateParams = {
