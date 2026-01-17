@@ -64,7 +64,7 @@ export class PortfolioSectionComponent implements AfterViewInit {
     },
     {
       id: 2,
-      title: 'Apartament dwu-pokojowy',
+      title: 'Apartament',
       category: 'mieszkania',
       image: 'assets/images/i.jpg',
       images: ['assets/images/i.jpg', 'assets/images/j.jpg', 'assets/images/k.jpg', 'assets/images/l.jpg', 'assets/images/m.jpg', 'assets/images/n.jpg'],
