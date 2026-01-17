@@ -23,7 +23,7 @@ export class TestimonialsSectionComponent implements AfterViewInit {
   testimonials: Testimonial[] = [
     {
       name: 'Milena',
-      role: 'Kliniska Wielkie',
+      role: 'Szczecin',
       content: 'Zleciłam projekt sypialni i salonu. Praca od koncepcji poprzez projektowanie aż po realizację w pełni profesjonalna, uwzględniająca potrzeby i pomysły moje i męża. Przestrzeń wygląda dokładnie tak jak sobie wymarzyłam, a dziewczyny pomogły mi to zwizualizować. Polecam z całego serca.',
       rating: 5,
       image: 'assets/images/bg1.jpg'
