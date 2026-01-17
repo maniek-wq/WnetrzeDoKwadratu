@@ -44,6 +44,11 @@ export class FaqSectionComponent implements AfterViewInit {
       isOpen: false
     },
     {
+      question: 'Ile wizyt na budowie jest wliczonych w cenę projektu?',
+      answer: 'Pierwsze trzy wizyty na budowie są wliczone w cenę projektu. Każda dodatkowa wizyta jest płatna: od 300 do 500 zł za wizytę miejscową (w tym samym mieście) oraz od 500 do 800 zł za wizytę zamiejscową (poza miastem). Szczegóły ustalamy indywidualnie.',
+      isOpen: false
+    },
+    {
       question: 'Jaki jest koszt projektu wnętrza?',
       answer: 'Ceny zaczynają się od 100 zł/m² za projekt funkcjonalny, 120 zł/m² za projekt koncepcyjny i 150 zł/m² za projekt kompleksowy. Dokładną wycenę przygotowujemy po zapoznaniu się z zakresem prac i metrażem.',
       isOpen: false
