@@ -1,0 +1,59 @@
+<section id="uslugi" class="py-20 md:py-32 bg-[#F4F1EC] reveal-section" [class.active]="isVisible">
+  <div class="container mx-auto px-6 md:px-12 lg:px-24">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal-item">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-dark hero-title-font mb-4">
+        Nasze usługi
+      </h2>
+      <p class="text-lg md:text-xl text-gray-medium max-w-2xl mx-auto hero-subtitle-font">
+        Wybierz zakres projektu dopasowany do Twoich potrzeb
+      </p>
+    </div>
+    
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12">
+      <div 
+        *ngFor="let service of services; let i = index"
+        class="service-card-new reveal-item"
+        [style.transition-delay]="(i * 0.2) + 's'"
+      >
+        <!-- Price Ribbon -->
+        <div class="price-ribbon">
+          <span>{{ service.price }}</span>
+        </div>
+
+        <!-- Card Image -->
+        <div class="card-image-container">
+          <img 
+            [src]="service.image" 
+            [alt]="service.title" 
+            loading="lazy" 
+            class="card-image"
+            [ngClass]="{
+              'img-sketch-bw': service.imageStyle === 'sketch-bw',
+              'img-sketch-color': service.imageStyle === 'sketch-color',
+              'img-full-color': service.imageStyle === 'full-color'
+            }"
+          >
+        </div>
+
+        <!-- Card Content -->
+        <div class="card-content-new">
+          <h3 class="service-title-new">{{ service.title }}</h3>
+          <p class="service-desc-new">{{ service.description }}</p>
+          
+          <!-- Points / Features -->
+          <ul class="text-left space-y-4 px-2">
+            <li *ngFor="let feature of service.features" class="flex items-center text-gray-dark font-medium text-sm md:text-base">
+              <span class="w-1.5 h-1.5 bg-earth-tan rounded-full mr-4 flex-shrink-0"></span>
+              {{ feature }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+

@@ -1,0 +1,54 @@
+/* Portfolio section styles */
+
+.hero-title-font {
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Georgia', serif;
+}
+
+.hero-subtitle-font {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+}
+
+/* Reveal animation on scroll */
+.reveal-section .reveal-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-section.active .reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom easing for project cards */
+.project-card {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Removing static animation from previous step */
+.project-card {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+/* ==========================================
+   GALLERY BADGE
+   ========================================== */
+
+.gallery-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+

@@ -1,0 +1,50 @@
+<section id="proces" class="py-20 md:py-32 bg-[#2F2F2F] reveal-section" [class.active]="isVisible">
+  <div class="container mx-auto px-6 md:px-12 lg:px-24">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal-item">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white hero-title-font mb-4">
+        Jak pracujemy
+      </h2>
+      <p class="text-lg md:text-xl text-white/70 max-w-2xl mx-auto hero-subtitle-font">
+        Przejrzysty proces, który prowadzi od wizji do realizacji
+      </p>
+    </div>
+    
+    <!-- Process Timeline -->
+    <div class="process-timeline reveal-item" style="transition-delay: 0.2s">
+      
+      <div 
+        *ngFor="let step of steps; let i = index; let last = last"
+        class="process-step"
+        [style.transition-delay]="(i * 0.15) + 's'"
+      >
+        <!-- Step Card -->
+        <div class="step-card">
+          <div class="step-number">{{ step.number }}</div>
+          <h3 class="step-title">{{ step.title }}</h3>
+          <p class="step-description">{{ step.description }}</p>
+        </div>
+        
+        <!-- Connector Line -->
+        <div class="step-connector" *ngIf="!last">
+          <div class="connector-line"></div>
+          <div class="connector-arrow">→</div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- CTA -->
+    <div class="text-center mt-16 reveal-item" style="transition-delay: 0.6s">
+      <a href="#kontakt" class="inline-flex items-center px-8 py-4 bg-white text-gray-dark font-semibold rounded-full hover:bg-beige-warm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+        Rozpocznij współpracę
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+    
+  </div>
+</section>
+

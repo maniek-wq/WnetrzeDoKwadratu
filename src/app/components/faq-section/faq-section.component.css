@@ -1,0 +1,83 @@
+.hero-title-font {
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-subtitle-font {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* FAQ Item */
+.faq-item {
+  border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+/* Question Button */
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2F2F2F;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: #8B7355;
+}
+
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  color: #8B7355;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.faq-icon.rotate {
+  transform: rotate(180deg);
+}
+
+/* Answer */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer.show {
+  max-height: 300px;
+  padding-bottom: 24px;
+}
+
+.faq-answer p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #666;
+}
+
+/* Reveal animation */
+.reveal-section .reveal-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-section.active .reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+

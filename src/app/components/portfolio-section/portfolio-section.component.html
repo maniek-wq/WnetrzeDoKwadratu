@@ -1,0 +1,111 @@
+<section id="projekty" class="py-20 md:py-32 bg-[#F8F5F0] reveal-section" [class.active]="isVisible">
+  <div class="container mx-auto px-6 md:px-12 lg:px-24">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal-item">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-dark hero-title-font mb-4">
+        Nasze Projekty
+      </h2>
+      <p class="text-lg md:text-xl text-gray-medium max-w-2xl mx-auto hero-subtitle-font">
+        Każdy projekt to historia — odkryj wnętrza, które stworzyliśmy dla naszych klientów
+      </p>
+    </div>
+    
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12 reveal-item" style="transition-delay: 0.2s">
+      <button 
+        *ngFor="let category of categories"
+        (click)="setFilter(category.id)"
+        class="px-6 py-2 rounded-full font-medium transition-all duration-300"
+        [class.bg-earth-brown]="activeFilter === category.id"
+        [class.text-white]="activeFilter === category.id"
+        [class.bg-white]="activeFilter !== category.id"
+        [class.text-gray-dark]="activeFilter !== category.id"
+        [class.hover:bg-earth-tan]="activeFilter !== category.id"
+        [class.hover:text-white]="activeFilter !== category.id"
+        [class.shadow-md]="activeFilter === category.id"
+      >
+        {{ category.label }}
+      </button>
+    </div>
+    
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-item" style="transition-delay: 0.4s">
+      <div 
+        *ngFor="let project of filteredProjects; let i = index"
+        class="project-card group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+        (click)="openLightbox(i)"
+      >
+        <!-- Project Image -->
+        <div class="aspect-[4/3] overflow-hidden relative">
+          <img 
+            [src]="project.image" 
+            [alt]="project.title"
+            loading="lazy"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          >
+          
+          <!-- Badge dla projektów z galerią -->
+          <div *ngIf="project.images && project.images.length > 1" class="gallery-badge">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            {{ project.images.length }}
+          </div>
+        </div>
+        
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-dark/90 via-gray-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <!-- Project Info -->
+        <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+          <span class="text-earth-tan text-sm font-medium uppercase tracking-wider">
+            {{ project.category }}
+          </span>
+          <h3 class="text-xl md:text-2xl font-bold text-white mt-1 hero-title-font">
+            {{ project.title }}
+          </h3>
+          <p class="text-white/80 mt-2 hero-subtitle-font">
+            {{ project.description }}
+          </p>
+          <a (click)="$event.stopPropagation()" class="inline-flex items-center text-white mt-4 hover:text-earth-tan transition-colors">
+            <span>Zobacz projekt</span>
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Default visible info -->
+        <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-gray-dark/80 to-transparent group-hover:opacity-0 transition-opacity duration-500">
+          <h3 class="text-xl font-bold text-white hero-title-font">
+            {{ project.title }}
+          </h3>
+        </div>
+      </div>
+    </div>
+    
+    <!-- View All Button -->
+    <div class="text-center mt-12" *ngIf="!showAll && activeFilter === 'all'">
+      <button 
+        (click)="showAllProjects()"
+        class="inline-flex items-center px-8 py-4 bg-earth-brown text-white font-semibold rounded-full hover:bg-earth-tan transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+      >
+        <span>Zobacz wszystkie projekty</span>
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </button>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Lightbox -->
+<app-lightbox 
+  [images]="lightboxImages"
+  [currentIndex]="lightboxIndex"
+  [isOpen]="lightboxOpen"
+  (closed)="closeLightbox()"
+></app-lightbox>
+

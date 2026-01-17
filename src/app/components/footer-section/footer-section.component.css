@@ -1,0 +1,132 @@
+.footer-section {
+  background: #2F2F2F;
+  color: #F8F5F0;
+  padding: 80px 0 30px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+}
+
+/* Logo & Brand */
+.footer-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1); /* Make logo white */
+}
+
+.footer-tagline {
+  color: #A0A0A0;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* Headings */
+.footer-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #F8F5F0;
+}
+
+/* Links */
+.footer-links,
+.footer-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li,
+.footer-info li {
+  margin-bottom: 14px;
+}
+
+.footer-links a {
+  color: #A0A0A0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 15px;
+}
+
+.footer-links a:hover {
+  color: #D4A574;
+}
+
+.footer-info li {
+  color: #A0A0A0;
+  font-size: 15px;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 576px) {
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F8F5F0;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: #D4A574;
+  transform: translateY(-3px);
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #808080;
+  font-size: 14px;
+}
+

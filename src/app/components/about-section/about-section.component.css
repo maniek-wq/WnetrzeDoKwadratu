@@ -1,0 +1,27 @@
+.hero-title-font {
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-subtitle-font {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Image styling */
+img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+/* Reveal on scroll base */
+.reveal-section .reveal-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-section.active .reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+

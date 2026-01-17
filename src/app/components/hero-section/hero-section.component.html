@@ -1,0 +1,66 @@
+<section class="hero-section relative w-full h-screen overflow-hidden">
+  <!-- Background Image with Zoom Animation -->
+  <div 
+    #backgroundImage
+    class="hero-bg absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+    [style.background-image]="'url(assets/images/bg1.jpg)'"
+  ></div>
+  
+  <!-- Horizontal obsidian gradient: elegant dark blue-gray tone -->
+  <div class="absolute inset-0 z-[1] pointer-events-none" 
+       style="background: linear-gradient(to right, rgba(13, 27, 42, 0.95) 0%, rgba(27, 38, 59, 0.75) 30%, rgba(42, 54, 71, 0.4) 60%, rgba(65, 77, 95, 0) 100%);"></div>
+  
+  <!-- Hero Text - Left aligned tagline -->
+  <div 
+    #heroText
+    class="absolute inset-0 flex items-center z-[100] px-8 md:px-16 lg:px-24"
+    *ngIf="showText"
+  >
+    <div class="max-w-xl">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide hero-title-font mb-6 text-slide-up" 
+          style="color: white !important; text-shadow: 2px 2px 8px rgba(0,0,0,0.6);">
+        Tworzymy przestrzenie,<br>w których żyjesz
+      </h1>
+      <p class="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed text-slide-up-delay hero-subtitle-font mb-8"
+         style="text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
+        Projektowanie wnętrz z pasją i precyzją.<br>
+        Twoje marzenia — nasza realizacja.
+      </p>
+      
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 text-slide-up-delay-2">
+        <a href="#projekty" 
+           class="cta-button-primary px-8 py-4 bg-white text-gray-dark font-semibold rounded-full hover:bg-beige-warm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-center">
+          Zobacz realizacje
+        </a>
+        <a href="#kontakt" 
+           class="cta-button-secondary px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300 text-center backdrop-blur-sm">
+          Umów konsultację
+        </a>
+      </div>
+      
+      <!-- Social Proof - Animated Counters (UKRYTE - do późniejszego użycia) -->
+      <!-- 
+      <div class="flex flex-wrap gap-8 mt-12 text-slide-up-delay-3">
+        <div *ngFor="let stat of stats" class="text-white/80">
+          <span class="text-3xl font-bold text-white">{{ stat.current }}{{ stat.suffix }}</span>
+          <p class="text-sm">{{ stat.label }}</p>
+        </div>
+      </div>
+      -->
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-[100] scroll-indicator" *ngIf="showText">
+    <a href="#projekty" class="flex flex-col items-center text-white/70 hover:text-white transition-colors">
+      <span class="text-sm mb-2 tracking-widest uppercase">Przewiń</span>
+      <div class="scroll-arrow">
+        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </a>
+  </div>
+</section>
+

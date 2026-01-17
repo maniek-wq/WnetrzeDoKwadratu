@@ -1,0 +1,149 @@
+/* New Service Cards Style */
+.service-card-new {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card-new:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Ribbon badge in corner */
+.price-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.price-ribbon span {
+  position: absolute;
+  display: block;
+  width: 225px;
+  padding: 10px 0;
+  background-color: #8B7355; /* Earth brown */
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  text-align: center;
+  left: -25px;
+  top: 45px;
+  transform: rotate(45deg);
+  font-size: 14px;
+}
+
+/* Image styling - Base */
+.card-image-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+/* Style 1: Sketch Black & White (Projekt funkcjonalny) */
+.img-sketch-bw {
+  filter: grayscale(100%) contrast(1.1) brightness(1.05);
+  opacity: 0.85;
+}
+
+.service-card-new:hover .img-sketch-bw {
+  filter: grayscale(100%) contrast(1.2) brightness(1.1);
+  opacity: 0.95;
+  transform: scale(1.05);
+}
+
+/* Style 2: Sketch Color (Projekt koncepcyjny) */
+.img-sketch-color {
+  filter: saturate(0.7) contrast(1.1) brightness(1.05);
+  opacity: 0.9;
+}
+
+.service-card-new:hover .img-sketch-color {
+  filter: saturate(1) contrast(1.1) brightness(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Style 3: Full Color (Projekt kompleksowy) */
+.img-full-color {
+  filter: none;
+  opacity: 1;
+}
+
+.service-card-new:hover .img-full-color {
+  transform: scale(1.05);
+}
+
+/* Text Content Styling */
+.card-content-new {
+  padding: 35px 25px;
+  text-align: center;
+  flex-grow: 1;
+  background: white; /* Pure white cards */
+}
+
+.service-title-new {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #2F2F2F;
+  margin-bottom: 35px; /* Increased from 20px */
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.service-desc-new {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: #666;
+  line-height: 1.6;
+  max-width: 95%;
+  margin: 0 auto 35px auto; /* Increased gap after description */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 12px; /* Add gap between points */
+}
+
+ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Reveal on scroll override */
+.reveal-section .reveal-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal-section.active .reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+

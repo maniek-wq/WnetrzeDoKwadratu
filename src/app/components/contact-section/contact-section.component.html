@@ -1,0 +1,226 @@
+<section id="kontakt" class="py-20 md:py-32 bg-white reveal-section" [class.active]="isVisible">
+  <div class="container mx-auto px-6 md:px-12 lg:px-24">
+    <div class="flex flex-col xl:flex-row gap-16">
+      
+      <!-- Info Side -->
+      <div class="w-full xl:w-1/3 reveal-item">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-dark hero-title-font mb-8">
+          Porozmawiajmy o Twoim projekcie
+        </h2>
+        <p class="text-lg text-gray-medium mb-12 hero-subtitle-font leading-relaxed">
+          Masz pytania? Chcesz umówić się na pierwszą konsultację? Jesteśmy tutaj, aby pomóc Ci stworzyć przestrzeń, o której marzysz.
+        </p>
+        
+        <div class="space-y-8">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-beige-light flex items-center justify-center rounded-full text-2xl">📍</div>
+            <div>
+              <h4 class="font-bold text-gray-dark">Adres</h4>
+              <p class="text-gray-medium">ul. Architektów 12<br>00-001 Warszawa</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-beige-light flex items-center justify-center rounded-full text-2xl">📞</div>
+            <div>
+              <h4 class="font-bold text-gray-dark">Telefon</h4>
+              <p class="text-gray-medium">+48 123 456 789</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-beige-light flex items-center justify-center rounded-full text-2xl">📧</div>
+            <div>
+              <h4 class="font-bold text-gray-dark">Email</h4>
+              <p class="text-gray-medium">kontakt&#64;wnetrzedokwadratu.pl</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Form Side -->
+      <div class="w-full xl:w-2/3 reveal-item" style="transition-delay: 0.3s">
+        <div class="form-container p-8 md:p-12 rounded-xl shadow-xl">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <!-- Name Field -->
+              <div>
+                <label class="block text-sm font-bold text-gray-dark mb-2 uppercase tracking-wider">Imię i nazwisko</label>
+                <input 
+                  type="text" 
+                  formControlName="name" 
+                  class="w-full px-6 py-4 bg-white rounded-lg border-2 transition-all shadow-sm"
+                  [class.border-transparent]="!contactForm.get('name')?.invalid || !contactForm.get('name')?.touched"
+                  [class.border-red-400]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+                  [class.focus:ring-2]="true"
+                  [class.focus:ring-earth-tan]="!contactForm.get('name')?.invalid || !contactForm.get('name')?.touched"
+                  [class.focus:ring-red-400]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+                  placeholder="Jan Kowalski"
+                >
+                <p *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="text-red-500 text-sm mt-2">
+                  Imię i nazwisko jest wymagane
+                </p>
+              </div>
+              
+              <!-- Email Field -->
+              <div>
+                <label class="block text-sm font-bold text-gray-dark mb-2 uppercase tracking-wider">Adres email</label>
+                <input 
+                  type="email" 
+                  formControlName="email" 
+                  class="w-full px-6 py-4 bg-white rounded-lg border-2 transition-all shadow-sm"
+                  [class.border-transparent]="!contactForm.get('email')?.invalid || !contactForm.get('email')?.touched"
+                  [class.border-red-400]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                  [class.focus:ring-2]="true"
+                  [class.focus:ring-earth-tan]="!contactForm.get('email')?.invalid || !contactForm.get('email')?.touched"
+                  [class.focus:ring-red-400]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+                  placeholder="jan&#64;poczta.pl"
+                >
+                <p *ngIf="contactForm.get('email')?.errors?.['required'] && contactForm.get('email')?.touched" class="text-red-500 text-sm mt-2">
+                  Email jest wymagany
+                </p>
+                <p *ngIf="contactForm.get('email')?.errors?.['email'] && contactForm.get('email')?.touched" class="text-red-500 text-sm mt-2">
+                  Podaj prawidłowy adres email
+                </p>
+              </div>
+            </div>
+            
+            <!-- Subject Field -->
+            <div class="mb-6">
+              <label class="block text-sm font-bold text-gray-dark mb-2 uppercase tracking-wider">Temat</label>
+              <select 
+                formControlName="subject" 
+                class="w-full px-6 py-4 bg-white rounded-lg border-2 transition-all shadow-sm"
+                [class.border-transparent]="!contactForm.get('subject')?.invalid || !contactForm.get('subject')?.touched"
+                [class.border-red-400]="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched"
+              >
+                <option value="" disabled selected>Wybierz temat</option>
+                <option value="projekt">Projekt wnętrz prywatnych</option>
+                <option value="komercyjne">Wnętrze komercyjne</option>
+                <option value="staging">Home Staging</option>
+                <option value="inne">Inne</option>
+              </select>
+              <p *ngIf="contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched" class="text-red-500 text-sm mt-2">
+                Wybierz temat wiadomości
+              </p>
+            </div>
+            
+            <!-- Message Field -->
+            <div class="mb-8">
+              <label class="block text-sm font-bold text-gray-dark mb-2 uppercase tracking-wider">Wiadomość</label>
+              <textarea 
+                formControlName="message" 
+                rows="5" 
+                class="w-full px-6 py-4 bg-white rounded-lg border-2 transition-all shadow-sm"
+                [class.border-transparent]="!contactForm.get('message')?.invalid || !contactForm.get('message')?.touched"
+                [class.border-red-400]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                [class.focus:ring-2]="true"
+                [class.focus:ring-earth-tan]="!contactForm.get('message')?.invalid || !contactForm.get('message')?.touched"
+                [class.focus:ring-red-400]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
+                placeholder="Opisz swój projekt..."
+              ></textarea>
+              <p *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="text-red-500 text-sm mt-2">
+                Wiadomość jest wymagana
+              </p>
+            </div>
+            
+            <!-- RODO Consent Checkbox -->
+            <div class="mb-6">
+              <label class="flex items-start gap-3 cursor-pointer group">
+                <input 
+                  type="checkbox" 
+                  formControlName="privacyConsent" 
+                  class="mt-1 w-5 h-5 rounded border-gray-300 text-earth-brown focus:ring-earth-tan cursor-pointer"
+                  [class.border-red-400]="contactForm.get('privacyConsent')?.invalid && contactForm.get('privacyConsent')?.touched"
+                >
+                <span class="text-sm text-gray-medium leading-relaxed">
+                  Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z 
+                  <button type="button" (click)="openPrivacyPolicy()" class="text-earth-brown font-semibold hover:underline">
+                    Polityką Prywatności
+                  </button>
+                  w celu odpowiedzi na moje zapytanie. *
+                </span>
+              </label>
+              <p *ngIf="contactForm.get('privacyConsent')?.invalid && contactForm.get('privacyConsent')?.touched" class="text-red-500 text-sm mt-2 ml-8">
+                Zgoda jest wymagana do wysłania wiadomości
+              </p>
+            </div>
+            
+            <button 
+              type="submit" 
+              [disabled]="contactForm.invalid || isLoading"
+              class="w-full py-5 bg-earth-brown text-white font-bold rounded-lg hover:bg-earth-tan transition-all duration-300 transform hover:-translate-y-1 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+            >
+              <span *ngIf="!isLoading">Wyślij wiadomość</span>
+              <span *ngIf="isLoading" class="flex items-center justify-center gap-2">
+                <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Wysyłanie...
+              </span>
+            </button>
+            
+            <!-- Error Message -->
+            <div *ngIf="errorMessage" class="mt-4 p-4 bg-red-100 border border-red-300 rounded-lg text-red-700 text-center">
+              {{ errorMessage }}
+            </div>
+          </form>
+          
+          <!-- Success Message -->
+          <div *ngIf="submitted" class="text-center py-12">
+            <div class="text-6xl mb-6">✉️</div>
+            <h3 class="text-2xl font-bold text-gray-dark mb-4">Wiadomość została wysłana!</h3>
+            <p class="text-gray-medium mb-8">Dziękujemy za kontakt. Odpowiemy na Twoją wiadomość najszybciej jak to możliwe.</p>
+            <button (click)="submitted = false" class="text-earth-brown font-bold hover:underline">Wyślij kolejną wiadomość</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Privacy Policy Modal -->
+<div class="privacy-overlay" *ngIf="showPrivacyPolicy" (click)="closePrivacyPolicy()">
+  <div class="privacy-modal" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closePrivacyPolicy()" aria-label="Zamknij">×</button>
+    
+    <h2 class="privacy-title">Polityka Prywatności</h2>
+    
+    <div class="privacy-content">
+      <h3>1. Administrator danych</h3>
+      <p>Administratorem Twoich danych osobowych jest Wnętrze do kwadratu z siedzibą w Warszawie, ul. Architektów 12, 00-001 Warszawa.</p>
+      
+      <h3>2. Cele przetwarzania</h3>
+      <p>Twoje dane osobowe przetwarzamy w celu:</p>
+      <ul>
+        <li>Odpowiedzi na Twoje zapytania przesłane przez formularz kontaktowy</li>
+        <li>Przygotowania oferty i realizacji usług projektowych</li>
+        <li>Wypełnienia obowiązków prawnych ciążących na administratorze</li>
+      </ul>
+      
+      <h3>3. Podstawa prawna</h3>
+      <p>Podstawą prawną przetwarzania danych jest Twoja zgoda (art. 6 ust. 1 lit. a RODO) oraz prawnie uzasadniony interes administratora (art. 6 ust. 1 lit. f RODO).</p>
+      
+      <h3>4. Okres przechowywania</h3>
+      <p>Twoje dane będą przechowywane przez okres niezbędny do realizacji celów, dla których zostały zebrane, nie dłużej niż 3 lata od ostatniego kontaktu.</p>
+      
+      <h3>5. Twoje prawa</h3>
+      <p>Masz prawo do:</p>
+      <ul>
+        <li>Dostępu do swoich danych</li>
+        <li>Sprostowania danych</li>
+        <li>Usunięcia danych ("prawo do bycia zapomnianym")</li>
+        <li>Ograniczenia przetwarzania</li>
+        <li>Przenoszenia danych</li>
+        <li>Wniesienia sprzeciwu</li>
+        <li>Cofnięcia zgody w dowolnym momencie</li>
+      </ul>
+      
+      <h3>6. Kontakt</h3>
+      <p>W sprawach związanych z ochroną danych osobowych możesz kontaktować się pod adresem: kontakt&#64;wnetrzedokwadratu.pl</p>
+    </div>
+  </div>
+</div>
+

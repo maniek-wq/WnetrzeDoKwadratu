@@ -1,0 +1,69 @@
+<!-- Main Navbar -->
+<header 
+  class="navbar-container"
+  [class.navbar-visible]="show && !isHidden"
+  [class.navbar-hidden]="isHidden"
+  [class.navbar-initial]="!show"
+>
+  <div class="navbar-content">
+    <!-- Logo -->
+    <a href="#" class="navbar-logo">
+      <img src="assets/images/logo.PNG" alt="Wnętrze do kwadratu" class="h-10 md:h-12 w-auto">
+    </a>
+    
+    <!-- Desktop Menu -->
+    <nav class="desktop-menu">
+      <a *ngFor="let item of menuItems" [href]="item.route">
+        {{ item.label }}
+      </a>
+      <button class="contact-btn" (click)="openContactForm()">
+        Umów konsultację
+      </button>
+    </nav>
+    
+    <!-- Hamburger Button -->
+    <button 
+      class="hamburger-btn"
+      (click)="onHamburgerClick()"
+      type="button"
+    >
+      <span class="hamburger-icon" [class.open]="isMenuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div 
+  class="mobile-overlay"
+  [class.active]="isMenuOpen"
+  (click)="closeMenu()"
+></div>
+
+<!-- Mobile Menu Panel -->
+<aside 
+  class="mobile-menu"
+  [class.open]="isMenuOpen"
+>
+  <nav class="mobile-nav">
+    <a 
+      *ngFor="let item of menuItems" 
+      [href]="item.route"
+      (click)="closeMenu()"
+    >
+      {{ item.label }}
+    </a>
+  </nav>
+  
+  <button class="mobile-contact-btn" (click)="openContactForm()">
+    Umów konsultację
+  </button>
+  
+  <div class="mobile-info">
+    <p>📞 +48 123 456 789</p>
+    <p>📧 kontakt&#64;wnetrzedokwadratu.pl</p>
+  </div>
+</aside>

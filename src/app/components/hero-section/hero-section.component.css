@@ -1,0 +1,122 @@
+.hero-section {
+  position: relative;
+}
+
+/* Background initial state - zoomed in */
+.hero-bg {
+  transform: scale(1.2);
+  will-change: transform;
+  transition: transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Background zoomed out state */
+.hero-bg.zoom-out {
+  transform: scale(1);
+}
+
+/* Alternative: Keyframe animation for zoom-out */
+@keyframes zoomOutAnimation {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-zoom-out {
+  animation: zoomOutAnimation 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Slide up animation for text */
+.text-slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 0.8s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.text-slide-up-delay {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+  will-change: opacity, transform;
+}
+
+.text-slide-up-delay-2 {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+  will-change: opacity, transform;
+}
+
+.text-slide-up-delay-3 {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.9s;
+  will-change: opacity, transform;
+}
+
+/* Scroll indicator animation */
+.scroll-indicator {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.scroll-arrow {
+  animation: bounceArrow 2s infinite;
+}
+
+@keyframes bounceArrow {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(8px); }
+  60% { transform: translateY(4px); }
+}
+
+/* Slide up from bottom animation */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure text is visible */
+.hero-section h1 {
+  color: white !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Elegant font for hero title - similar to logo style */
+.hero-title-font {
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Georgia', serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* Subtitle font */
+.hero-subtitle-font {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-weight: 400;
+}
+
+/* Ensure background stays in place during animation */
+.hero-section > div:first-child {
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+

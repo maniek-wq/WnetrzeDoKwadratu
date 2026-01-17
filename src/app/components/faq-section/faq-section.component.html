@@ -1,0 +1,46 @@
+<section id="faq" class="py-20 md:py-32 bg-white reveal-section" [class.active]="isVisible">
+  <div class="container mx-auto px-6 md:px-12 lg:px-24">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal-item">
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-dark hero-title-font mb-4">
+        Często zadawane pytania
+      </h2>
+      <p class="text-lg md:text-xl text-gray-medium max-w-2xl mx-auto hero-subtitle-font">
+        Odpowiedzi na najczęstsze pytania dotyczące naszych usług
+      </p>
+    </div>
+    
+    <!-- FAQ Accordion -->
+    <div class="max-w-3xl mx-auto reveal-item" style="transition-delay: 0.2s">
+      <div 
+        *ngFor="let item of faqItems; let i = index"
+        class="faq-item"
+        [class.open]="item.isOpen"
+      >
+        <button 
+          class="faq-question"
+          (click)="toggleFaq(i)"
+          [attr.aria-expanded]="item.isOpen"
+        >
+          <span>{{ item.question }}</span>
+          <svg 
+            class="faq-icon" 
+            [class.rotate]="item.isOpen"
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2"
+          >
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="faq-answer" [class.show]="item.isOpen">
+          <p>{{ item.answer }}</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
