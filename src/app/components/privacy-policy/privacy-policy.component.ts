@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
         
         <div class="privacy-content">
           <h3>1. Administrator danych</h3>
-          <p>Administratorem Twoich danych osobowych jest Wnętrze do kwadratu z siedzibą w Warszawie, ul. Architektów 12, 00-001 Warszawa.</p>
+          <p>Administratorem Twoich danych osobowych jest Wnętrze do kwadratu.</p>
           
           <h3>2. Cele przetwarzania</h3>
           <p>Twoje dane osobowe przetwarzamy w celu:</p>
@@ -43,7 +43,7 @@ import { CommonModule } from '@angular/common';
           </ul>
           
           <h3>6. Kontakt</h3>
-          <p>W sprawach związanych z ochroną danych osobowych możesz kontaktować się pod adresem: kontakt@wnetrzedokwadratu.pl</p>
+          <p>W sprawach związanych z ochroną danych osobowych możesz kontaktować się pod adresem: dokwadratu.w@gmail.com</p>
           
           <h3>7. Pliki cookies</h3>
           <p>Strona wykorzystuje pliki cookies w celu zapewnienia prawidłowego działania oraz analizy ruchu. Możesz zarządzać ustawieniami cookies w swojej przeglądarce.</p>
