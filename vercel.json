@@ -1,4 +1,7 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/wnetrze-do-kwadratu/browser",
+  "framework": "angular",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
@@ -11,4 +14,3 @@
     }
   ]
 }
-
