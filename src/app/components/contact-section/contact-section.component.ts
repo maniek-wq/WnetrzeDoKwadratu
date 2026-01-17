@@ -182,23 +182,15 @@ export class ContactSectionComponent implements AfterViewInit {
       this.isLoading = true;
       this.errorMessage = '';
       
-      // Przygotowanie informacji o zdjęciach (czysty tekst dla EmailJS)
+      // Przygotowanie informacji o zdjęciach (dodawane do głównej wiadomości)
       let attachmentsInfo = '';
-      let photosHtml = '';
       
       if (this.selectedFiles.length > 0) {
-        // Tekst do wiadomości (wiadomość główna)
         attachmentsInfo = `\n\n📎 ZAŁĄCZONE ZDJĘCIA (${this.selectedFiles.length}):\n`;
         this.selectedFiles.forEach((file, index) => {
           attachmentsInfo += `${index + 1}. ${file.name} (${this.formatFileSize(file.size)})\n`;
         });
-        
-        // Czysty tekst dla photos_html (działa zarówno w HTML jak i tekstowych emailach)
-        photosHtml = `\n\n📎 ZAŁĄCZONE ZDJĘCIA (${this.selectedFiles.length}):\n`;
-        this.selectedFiles.forEach((file, index) => {
-          photosHtml += `${index + 1}. ${file.name} (${this.formatFileSize(file.size)})\n`;
-        });
-        photosHtml += '\n(Uwaga: Zdjęcia zostały przesłane przez formularz. Skontaktuj się z klientem bezpośrednio aby je otrzymać)';
+        attachmentsInfo += '\n(Uwaga: Zdjęcia zostały przesłane przez formularz. Skontaktuj się z klientem bezpośrednio, aby je otrzymać.)';
       }
       
       const templateParams = {
@@ -206,8 +198,6 @@ export class ContactSectionComponent implements AfterViewInit {
         from_email: this.contactForm.value.email,
         subject: this.contactForm.value.subject,
         message: this.contactForm.value.message + attachmentsInfo,
-        photos_html: photosHtml,
-        attachments_count: this.selectedFiles.length.toString(),
         to_email: 'dokwadratu.w@gmail.com'
       };
       
