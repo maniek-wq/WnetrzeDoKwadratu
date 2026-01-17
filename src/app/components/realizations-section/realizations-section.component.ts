@@ -7,7 +7,8 @@ interface Realization {
   title: string;
   location: string;
   year: string;
-  image: string;
+  visualization: string;  // Zdjęcie wizualizacji
+  realization: string;    // Zdjęcie realizacji
   description: string;
 }
 
@@ -20,6 +21,7 @@ interface Realization {
 })
 export class RealizationsSectionComponent implements AfterViewInit {
   isVisible = false;
+  currentSlide = 0;
   
   // Lightbox state
   lightboxOpen = false;
@@ -43,45 +45,89 @@ export class RealizationsSectionComponent implements AfterViewInit {
   realizations: Realization[] = [
     {
       id: 1,
-      title: 'Apartament Premium',
-      location: 'Warszawa, Mokotów',
+      title: 'Kliniska Wielkie',
+      location: 'Kliniska Wielkie',
       year: '2024',
-      image: 'assets/images/bg1.jpg',
-      description: 'Kompleksowy projekt wnętrz apartamentu 120m² w stylu nowoczesnym'
+      visualization: 'assets/images/vizG3.jpg',
+      realization: 'assets/images/rlG3.jpg',
+      description: 'Kompleksowy projekt wnętrz galerii sztuki'
     },
     {
       id: 2,
-      title: 'Dom Jednorodzinny',
-      location: 'Konstancin-Jeziorna',
+      title: 'Kliniska Wielkie',
+      location: 'Kliniska Wielkie',
       year: '2024',
-      image: 'assets/images/bg1.jpg',
-      description: 'Eleganckie wnętrza domu 280m² z dbałością o każdy detal'
+      visualization: 'assets/images/vizg5.jpg',
+      realization: 'assets/images/rlg5.jpg',
+      description: 'Kompleksowy projekt wnętrz galerii sztuki'
     },
     {
       id: 3,
-      title: 'Penthouse z Tarasem',
-      location: 'Warszawa, Śródmieście',
-      year: '2023',
-      image: 'assets/images/bg1.jpg',
-      description: 'Luksusowy penthouse 200m² z panoramicznym widokiem na miasto'
+      title: 'Kliniska Wielkie',
+      location: 'Kliniska Wielkie',
+      year: '2024',
+      visualization: 'assets/images/viz1.jpg',
+      realization: 'assets/images/rl1.jpg',
+      description: 'Kompleksowy projekt wnętrz galerii sztuki'
     },
     {
       id: 4,
-      title: 'Mieszkanie Rodzinne',
-      location: 'Warszawa, Wilanów',
-      year: '2023',
-      image: 'assets/images/bg1.jpg',
-      description: 'Funkcjonalne wnętrze dla rodziny z dwójką dzieci'
+      title: 'Kliniska Wielkie',
+      location: 'Kliniska Wielkie',
+      year: '2024',
+      visualization: 'assets/images/viz3.jpg',
+      realization: 'assets/images/rl3.jpg',
+      description: 'Kompleksowy projekt wnętrz galerii sztuki'
+    },
+    {
+      id: 5,
+      title: 'Kliniska Wielkie',
+      location: 'Kliniska Wielkie',
+      year: '2024',
+      visualization: 'assets/images/x.jpg',
+      realization: 'assets/images/rl2.jpg',
+      description: 'Kompleksowy projekt wnętrz galerii sztuki'
+    },
+    {
+      id: 6,
+      title: 'Kliniska Wielkie',
+      location: 'Kliniska Wielkie',
+      year: '2024',
+      visualization: 'assets/images/viz4.jpg',
+      realization: 'assets/images/rl4.jpg',
+      description: 'Kompleksowy projekt wnętrz galerii sztuki'
     }
   ];
   
+  // Slider navigation
+  nextSlide() {
+    this.currentSlide = (this.currentSlide + 1) % this.realizations.length;
+  }
+  
+  prevSlide() {
+    this.currentSlide = this.currentSlide === 0 ? this.realizations.length - 1 : this.currentSlide - 1;
+  }
+  
+  goToSlide(index: number) {
+    this.currentSlide = index;
+  }
+  
   // Dla lightboxa - przekształcamy realizacje na format oczekiwany przez lightbox
   get lightboxImages() {
-    return this.realizations.map(r => ({
-      image: r.image,
-      title: r.title,
-      description: `${r.location} • ${r.year}`
-    }));
+    const images: any[] = [];
+    this.realizations.forEach(r => {
+      images.push({
+        image: r.visualization,
+        title: `${r.title} - Wizualizacja`,
+        description: `${r.location} • ${r.year}`
+      });
+      images.push({
+        image: r.realization,
+        title: `${r.title} - Realizacja`,
+        description: `${r.location} • ${r.year}`
+      });
+    });
+    return images;
   }
   
   openLightbox(index: number) {
