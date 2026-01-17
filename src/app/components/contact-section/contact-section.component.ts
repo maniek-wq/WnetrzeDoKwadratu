@@ -21,8 +21,8 @@ const EMAILJS_CONFIG = {
 // 4. Skopiuj Cloud Name i Upload Preset poniżej
 // ========================================
 const CLOUDINARY_CONFIG = {
-  CLOUD_NAME: 'YOUR_CLOUD_NAME',        // np. 'dokwadratu'
-  UPLOAD_PRESET: 'YOUR_UPLOAD_PRESET'   // np. 'wnetrze_upload'
+  CLOUD_NAME: 'dcdbqkdu6',        // np. 'dokwadratu'
+  UPLOAD_PRESET: 'wnetrze_upload'   // np. 'wnetrze_upload'
 };
 
 @Component({
@@ -204,7 +204,17 @@ export class ContactSectionComponent implements AfterViewInit {
           const response = JSON.parse(xhr.responseText);
           resolve(response.secure_url); // URL do zdjęcia
         } else {
-          reject(new Error(`Upload failed: ${xhr.statusText}`));
+          let errorMsg = `Upload failed: ${xhr.statusText}`;
+          if (xhr.status === 401) {
+            errorMsg = '401 Unauthorized - Sprawdź czy preset "wnetrze_upload" jest ustawiony jako "Unsigned" w Cloudinary';
+          }
+          try {
+            const errorResponse = JSON.parse(xhr.responseText);
+            if (errorResponse.error?.message) {
+              errorMsg += ` (${errorResponse.error.message})`;
+            }
+          } catch (e) {}
+          reject(new Error(errorMsg));
         }
       };
       
@@ -236,7 +246,18 @@ export class ContactSectionComponent implements AfterViewInit {
           this.errorMessage = '';
         } catch (error: any) {
           console.error('❌ Błąd uploadu zdjęć:', error);
-          this.errorMessage = 'Błąd podczas przesyłania zdjęć. Spróbuj ponownie lub wyślij wiadomość bez zdjęć.';
+          
+          let errorMsg = 'Błąd podczas przesyłania zdjęć. ';
+          
+          if (error.message?.includes('401') || error.message?.includes('Unauthorized')) {
+            errorMsg += 'Błąd autoryzacji Cloudinary. Sprawdź czy preset "wnetrze_upload" istnieje i jest ustawiony jako "Unsigned" w Cloudinary Dashboard.';
+          } else if (error.message?.includes('Network error')) {
+            errorMsg += 'Problem z połączeniem. Sprawdź internet i spróbuj ponownie.';
+          } else {
+            errorMsg += 'Spróbuj ponownie lub wyślij wiadomość bez zdjęć.';
+          }
+          
+          this.errorMessage = errorMsg;
           this.isLoading = false;
           return;
         }
