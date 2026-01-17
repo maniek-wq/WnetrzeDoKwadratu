@@ -44,14 +44,14 @@ export class ContactSectionComponent implements AfterViewInit {
     });
   }
 
-  onFileSelected(event: Event) {
+  async onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const newFiles = Array.from(input.files);
       
-      // Limit: maksymalnie 5 plików, każdy max 10MB
+      // Limit: maksymalnie 5 plików, każdy max 5MB (zmniejszone z 10MB)
       const maxFiles = 5;
-      const maxSize = 10 * 1024 * 1024; // 10MB
+      const maxSize = 5 * 1024 * 1024; // 5MB
       
       for (const file of newFiles) {
         if (this.selectedFiles.length >= maxFiles) {
@@ -60,7 +60,7 @@ export class ContactSectionComponent implements AfterViewInit {
         }
         
         if (file.size > maxSize) {
-          alert(`Plik "${file.name}" jest za duży. Maksymalny rozmiar: 10MB.`);
+          alert(`Plik "${file.name}" jest za duży. Maksymalny rozmiar: 5MB.`);
           continue;
         }
         
@@ -69,23 +69,78 @@ export class ContactSectionComponent implements AfterViewInit {
           continue;
         }
         
-        this.selectedFiles.push(file);
+        // Zmniejsz zdjęcie przed dodaniem (maksymalnie 800px szerokości, quality 0.8)
+        const resizedFile = await this.compressImage(file);
+        this.selectedFiles.push(resizedFile);
         
         // Tworzenie preview
         const reader = new FileReader();
         reader.onload = (e: any) => {
           this.filePreviews.push({
             name: file.name,
-            size: file.size,
+            size: resizedFile.size,
             url: e.target.result
           });
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(resizedFile);
       }
       
       // Reset input
       input.value = '';
     }
+  }
+
+  compressImage(file: File): Promise<File> {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const maxWidth = 800;
+          const maxHeight = 800;
+          
+          let width = img.width;
+          let height = img.height;
+          
+          if (width > height) {
+            if (width > maxWidth) {
+              height = (height * maxWidth) / width;
+              width = maxWidth;
+            }
+          } else {
+            if (height > maxHeight) {
+              width = (width * maxHeight) / height;
+              height = maxHeight;
+            }
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          
+          const ctx = canvas.getContext('2d');
+          ctx?.drawImage(img, 0, 0, width, height);
+          
+          canvas.toBlob(
+            (blob) => {
+              if (blob) {
+                const compressedFile = new File([blob], file.name, {
+                  type: 'image/jpeg',
+                  lastModified: Date.now()
+                });
+                resolve(compressedFile);
+              } else {
+                resolve(file);
+              }
+            },
+            'image/jpeg',
+            0.8 // quality 80%
+          );
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
   }
 
   removeFile(index: number) {
@@ -175,9 +230,23 @@ export class ContactSectionComponent implements AfterViewInit {
           this.submitted = false;
         }, 8000);
         
-      } catch (error) {
+      } catch (error: any) {
         console.error('❌ Błąd wysyłania:', error);
-        this.errorMessage = 'Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie lub skontaktuj się bezpośrednio mailowo.';
+        
+        // Lepsze komunikaty błędów
+        let errorMsg = 'Wystąpił błąd podczas wysyłania wiadomości. ';
+        
+        if (error?.status === 400) {
+          errorMsg += 'Prawdopodobnie dane są zbyt duże (zdjęcia). Spróbuj zmniejszyć rozmiar zdjęć lub wyślij mniej plików.';
+        } else if (error?.status === 429) {
+          errorMsg += 'Zbyt wiele żądań. Poczekaj chwilę i spróbuj ponownie.';
+        } else if (error?.status === 500) {
+          errorMsg += 'Problem po stronie serwera. Spróbuj ponownie za chwilę.';
+        } else {
+          errorMsg += 'Spróbuj ponownie lub skontaktuj się bezpośrednio mailowo.';
+        }
+        
+        this.errorMessage = errorMsg;
       } finally {
         this.isLoading = false;
       }
