@@ -22,23 +22,30 @@ export class TestimonialsSectionComponent implements AfterViewInit {
   
   testimonials: Testimonial[] = [
     {
-      name: 'Anna Kowalska',
-      role: 'Właścicielka apartamentu, Warszawa',
-      content: 'Współpraca z Wnętrze do kwadratu to czysta przyjemność. Zespół doskonale zrozumiał moje potrzeby i stworzył przestrzeń, która przewyższyła moje oczekiwania. Polecam każdemu, kto ceni profesjonalizm i kreatywność.',
+      name: 'Milena',
+      role: 'Kliniska Wielkie',
+      content: 'Zleciłam projekt sypialni i salonu. Praca od koncepcji poprzez projektowanie aż po realizację w pełni profesjonalna, uwzględniająca potrzeby i pomysły moje i męża. Przestrzeń wygląda dokładnie tak jak sobie wymarzyłam, a dziewczyny pomogły mi to zwizualizować. Polecam z całego serca.',
       rating: 5,
       image: 'assets/images/bg1.jpg'
     },
     {
-      name: 'Marcin Nowak',
-      role: 'Właściciel domu, Kraków',
-      content: 'Projektanci z WDK potrafią słuchać i przekładać marzenia na rzeczywistość. Nasz dom zyskał nowy charakter — nowoczesny, ale przytulny. Szczególnie cenię ich dbałość o detale i terminowość.',
+      name: 'Karolina',
+      role: 'Szczecin, Centrum',
+      content: 'Mieszkanie było w totalnym remoncie i nie wiedziałam od czego zacząć. Natalia i Julia pomogły mi uporządkować chaos - zaczęły od rozmowy o moim stylu życia, a potem pokazały kilka wizualizacji. Wybrałam wariant który idealnie pasuje do mnie. Teraz każdy kto wchodzi pyta kto projektował - tak pięknie to wygląda!',
       rating: 5,
       image: 'assets/images/bg1.jpg'
     },
     {
-      name: 'Katarzyna Wiśniewska',
-      role: 'Właścicielka biura, Gdańsk',
-      content: 'Zleciliśmy projekt naszego biura i jesteśmy zachwyceni efektem. Pracownicy chwalą nową przestrzeń, a klienci są pod wrażeniem. Inwestycja, która się zwróciła wielokrotnie.',
+      name: 'Tomasz',
+      role: 'Polic',
+      content: 'Mieliśmy dom który wyglądał jak z lat 90. Chcieliśmy go odświeżyć ale nie chcieliśmy tracić tego klimatu. Dziewczyny zaproponowały połączenie starych mebli z nowoczesnymi akcentami. Efekt? Dom wygląda jak z katalogu ale nadal jest nasz - ciepły i swojski. Najlepsze że wszystko zmieściliśmy w budżecie.',
+      rating: 5,
+      image: 'assets/images/bg1.jpg'
+    },
+    {
+      name: 'Magdalena',
+      role: 'Goleniów',
+      content: 'Przeprowadzałam się do nowego mieszkania i potrzebowałam szybkiego projektu. Miałam konkretny budżet i terminy. Natalia i Julia wszystko dopięły na ostatni guzik - projekt gotowy w 2 tygodnie, wykonawcy poleceni, materiały dobrane. Zero stresu z mojej strony. To jest ten typ współpracy jakiej szukałam.',
       rating: 5,
       image: 'assets/images/bg1.jpg'
     }
