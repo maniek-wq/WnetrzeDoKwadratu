@@ -63,3 +63,4 @@ src/
 - **Ziemie**: #8B7355 (brown), #D4A574 (tan), #B8860B (gold)
 - **Szarości**: #A9A9A9 (light), #808080 (medium), #2F2F2F (dark)
 
+

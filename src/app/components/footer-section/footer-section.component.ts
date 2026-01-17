@@ -12,3 +12,4 @@ export class FooterSectionComponent {
   currentYear = new Date().getFullYear();
 }
 
+

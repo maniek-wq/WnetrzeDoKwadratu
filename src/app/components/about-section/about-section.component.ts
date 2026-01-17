@@ -27,3 +27,4 @@ export class AboutSectionComponent implements AfterViewInit {
   }
 }
 
+

@@ -1,0 +1,11 @@
+# robots.txt for wnetrzedokwadratu.pl
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://wnetrzedokwadratu.pl/sitemap.xml
+
+# Disallow system files only
+Disallow: /main.*.js.map
+Disallow: /polyfills.*.js.map
