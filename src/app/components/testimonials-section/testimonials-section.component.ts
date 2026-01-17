@@ -37,7 +37,7 @@ export class TestimonialsSectionComponent implements AfterViewInit {
     },
     {
       name: 'Tomasz',
-      role: 'Polic',
+      role: 'Police',
       content: 'Mieliśmy dom który wyglądał jak z lat 90. Chcieliśmy go odświeżyć ale nie chcieliśmy tracić tego klimatu. Dziewczyny zaproponowały połączenie starych mebli z nowoczesnymi akcentami. Efekt? Dom wygląda jak z katalogu ale nadal jest nasz - ciepły i swojski. Najlepsze że wszystko zmieściliśmy w budżecie.',
       rating: 5,
       image: 'assets/images/bg1.jpg'
