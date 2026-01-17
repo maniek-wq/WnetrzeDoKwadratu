@@ -184,6 +184,68 @@
     ]
   }
   </script>
+  
+  <!-- Schema.org WebSite with SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Wnętrze do kwadratu",
+    "url": "https://wnetrzedokwadratu.pl",
+    "description": "Profesjonalne biuro projektowania wnętrz w Szczecinie",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Wnętrze do kwadratu"
+    },
+    "inLanguage": "pl-PL"
+  }
+  </script>
+  
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ile kosztuje projekt wnętrza w Szczecinie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ceny projektów wnętrz zaczynają się od 100 zł/m² za projekt funkcjonalny, 120 zł/m² za projekt koncepcyjny i 150 zł/m² za projekt kompleksowy z nadzorem autorskim."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak długo trwa realizacja projektu wnętrza?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Czas realizacji zależy od zakresu projektu i wielkości wnętrza. Zazwyczaj projekt funkcjonalny zajmuje 2-3 tygodnie, projekt koncepcyjny 3-4 tygodnie, a projekt kompleksowy 6-8 tygodni."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy projektujecie wnętrza poza Szczecinem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak, realizujemy projekty na terenie całego województwa zachodniopomorskiego oraz w innych regionach Polski. Część prac wykonujemy zdalnie."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co zawiera projekt kompleksowy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Projekt kompleksowy zawiera: koncepcję funkcjonalną, moodboardy, wizualizacje 3D, dokumentację techniczną, zestawienia materiałów, nadzór autorski oraz koordynację ekip wykonawczych."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/assets/images/bg.png" as="image">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 </head>
 <body>
   <app-root></app-root>

@@ -11,6 +11,11 @@
     <image:image>
       <image:loc>https://wnetrzedokwadratu.pl/assets/images/og-image.jpg</image:loc>
       <image:title>Wnętrze do kwadratu - Projektowanie wnętrz Szczecin</image:title>
+      <image:caption>Profesjonalne biuro projektowania wnętrz w Szczecinie</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/bg.png</image:loc>
+      <image:title>Studio projektowania wnętrz Szczecin</image:title>
     </image:image>
   </url>
   
@@ -20,6 +25,18 @@
     <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/bg1.jpg</image:loc>
+      <image:title>Galeria sztuki w Przemoczu - projekt wnętrza</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/i.jpg</image:loc>
+      <image:title>Apartament - projekt wnętrza Szczecin</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/z11.png</image:loc>
+      <image:title>Mieszkanie w centrum - aranżacja wnętrz</image:title>
+    </image:image>
   </url>
   
   <!-- Sekcja Realizacje -->
@@ -28,6 +45,14 @@
     <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/vizG3.jpg</image:loc>
+      <image:title>Wizualizacja 3D wnętrza - Kliniska Wielkie</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/rlG3.jpg</image:loc>
+      <image:title>Realizacja projektu wnętrza - Kliniska Wielkie</image:title>
+    </image:image>
   </url>
   
   <!-- Sekcja Usługi -->
@@ -36,6 +61,18 @@
     <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/szkic.png</image:loc>
+      <image:title>Projekt funkcjonalny wnętrza - 100 zł/m²</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/d_sketch.png</image:loc>
+      <image:title>Projekt koncepcyjny wnętrza - 120 zł/m²</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/d.jpg</image:loc>
+      <image:title>Projekt kompleksowy wnętrza - 150 zł/m²</image:title>
+    </image:image>
   </url>
   
   <!-- Sekcja O nas -->
@@ -44,6 +81,10 @@
     <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wnetrzedokwadratu.pl/assets/images/my.jpg</image:loc>
+      <image:title>Zespół Wnętrze do kwadratu - projektanci wnętrz Szczecin</image:title>
+    </image:image>
   </url>
   
   <!-- Sekcja Kontakt -->
@@ -55,4 +96,3 @@
   </url>
   
 </urlset>
-
