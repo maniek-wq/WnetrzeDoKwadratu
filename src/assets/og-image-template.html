@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>OG Image Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .og-container {
+            width: 1200px;
+            height: 630px;
+            position: relative;
+            overflow: hidden;
+            background: #2F2F2F;
+        }
+        
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(47, 47, 47, 0.9) 0%, rgba(139, 115, 85, 0.7) 100%);
+        }
+        
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            text-align: center;
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .logo-text span {
+            color: #D4A574;
+        }
+        
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .location {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: #D4A574;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .location svg {
+            width: 28px;
+            height: 28px;
+            fill: #D4A574;
+        }
+        
+        .services {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .service-item {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 24px;
+            border: 1px solid rgba(212, 165, 116, 0.5);
+            border-radius: 30px;
+        }
+        
+        .accent-line {
+            width: 80px;
+            height: 3px;
+            background: #D4A574;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="og-container">
+        <!-- Zamień na swoje zdjęcie - np. bg1.jpg, i.jpg lub inne -->
+        <img src="images/bg1.jpg" alt="" class="bg-image">
+        
+        <div class="overlay"></div>
+        
+        <div class="content">
+            <h1 class="logo-text">Wnętrze do <span>kwadratu</span></h1>
+            
+            <div class="accent-line"></div>
+            
+            <p class="tagline">Profesjonalne projektowanie wnętrz</p>
+            
+            <div class="location">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>Szczecin i okolice</span>
+            </div>
+            
+            <div class="services">
+                <div class="service-item">Projekty mieszkań</div>
+                <div class="service-item">Wizualizacje 3D</div>
+                <div class="service-item">Nadzór autorski</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
