@@ -41,13 +41,6 @@ export class TestimonialsSectionComponent implements AfterViewInit {
       content: 'Mieliśmy dom który wyglądał jak z lat 90. Chcieliśmy go odświeżyć ale nie chcieliśmy tracić tego klimatu. Dziewczyny zaproponowały połączenie starych mebli z nowoczesnymi akcentami. Efekt? Dom wygląda jak z katalogu ale nadal jest nasz - ciepły i swojski. Najlepsze że wszystko zmieściliśmy w budżecie.',
       rating: 5,
       image: 'assets/images/bg1.jpg'
-    },
-    {
-      name: 'Magdalena',
-      role: 'Goleniów',
-      content: 'Przeprowadzałam się do nowego mieszkania i potrzebowałam szybkiego projektu. Miałam konkretny budżet i terminy. Natalia i Julia wszystko dopięły na ostatni guzik - projekt gotowy w 2 tygodnie, wykonawcy poleceni, materiały dobrane. Zero stresu z mojej strony. To jest ten typ współpracy jakiej szukałam.',
-      rating: 5,
-      image: 'assets/images/bg1.jpg'
     }
   ];
 
