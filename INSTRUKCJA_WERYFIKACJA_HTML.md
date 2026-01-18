@@ -86,3 +86,4 @@ Możesz sprawdzić czy plik będzie dostępny:
 
 **Po wrzuceniu pliku i deploy - weryfikacja powinna działać natychmiast!** 🚀
 
+

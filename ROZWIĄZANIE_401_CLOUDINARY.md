@@ -75,3 +75,4 @@ Po poprawieniu, otwórz konsolę przeglądarki (F12 → Console) i sprawdź:
 
 **Większość problemów z 401 to preset nie ustawiony jako "Unsigned"!** 🔑
 
+

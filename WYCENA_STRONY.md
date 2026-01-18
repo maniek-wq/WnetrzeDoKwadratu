@@ -173,3 +173,4 @@ Zakres:
 - *Zakresu zaimplementowanych funkcji*
 - *Jakości kodu i designu*
 
+

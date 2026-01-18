@@ -136,3 +136,4 @@ Opisz swój projekt...
 
 **Gotowe!** Po konfiguracji wszystko będzie działać automatycznie. 🎉
 
+

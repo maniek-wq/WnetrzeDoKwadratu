@@ -95,3 +95,4 @@ EmailJS tego **nie obsługuje**. Możliwe rozwiązania:
 
 **Po usunięciu `{{photos_html}}` zapisz szablon i gotowe!** ✨
 
+
