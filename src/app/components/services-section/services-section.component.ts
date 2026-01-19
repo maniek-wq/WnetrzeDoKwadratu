@@ -26,7 +26,7 @@ export class ServicesSectionComponent implements AfterViewInit {
       price: '100 zł/m²',
       image: 'assets/images/szkic.png',
       description: 'Projekt wnętrz oparty na pomiarach pomieszczenia, zapewniający optymalne wykorzystanie przestrzeni.',
-      features: ['Układy ścian działowych', 'Rozmieszczenie mebli', 'Instalacje wod-kan', 'Punkty elektryczne'],
+      features: ['Koncepcja funkcjonalna (2-3 warianty)', 'Układy ścian działowych', 'Rozmieszczenie mebli', 'Widoki 3D'],
       imageStyle: 'sketch-bw'
     },
     {
@@ -42,7 +42,7 @@ export class ServicesSectionComponent implements AfterViewInit {
       price: '150 zł/m²',
       image: 'assets/images/d.jpg',
       description: 'Pełne wsparcie od A do Z — od pierwszych szkiców po nadzór nad realizacją.',
-      features: ['Dokumentacja techniczna', 'Zestawienia materiałowe', 'Nadzór autorski', 'Koordynacja ekip'],
+      features: ['Dokumentacja techniczna', 'Zestawienia materiałowe', 'Nadzór autorski*'],
       imageStyle: 'full-color'
     }
   ];
